@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NarongritMookmanee/InterviewAssignments.git"
+  },
+  "author": "Narongrit Mookmanee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NarongritMookmanee/InterviewAssignments/issues"
+  },
+  "homepage": "https://github.com/NarongritMookmanee/InterviewAssignments#readme",
+  "description": ""
+}
