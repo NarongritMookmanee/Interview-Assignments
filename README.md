@@ -107,8 +107,8 @@ This project implements a RESTful API server for user management, along with a c
     - Write unit and integration tests for backend services using Jest or Mocha.
 
 ## APIs Documentation
-
-- ### Base URL: `http://localhost:8000`
+- #### Import the `APIDocs.postman_collection.json` file into Postman to inspect and test the API endpoints.
+- #### Base URL: `http://localhost:8000`
 
 ---
 
