@@ -76,31 +76,37 @@ This project implements a RESTful API server for user management, along with a c
 1. ### Running the Application
     - Visit [my git repository](https://github.com/NarongritMookmanee/Interview-Assignments)
     - Clone the repository:
-        ``` git clone https://github.com/NarongritMookmanee/Interview-Assignments ```
+        ```bash
+        git clone https://github.com/NarongritMookmanee/Interview-Assignments
+        ```
     - Navigate to the project directory and build the containers:
-        ``` docker-compose up -d ```
+        ```bash
+        docker-compose up -d
+        ```
 
 2. ### Accessing the Application
     - Frontend: Accessible at http://localhost:3000
     - Backend: API available at http://localhost:8000
     - WebSocket: Available at [ws://localhost:8080](ws://localhost:8080)
+3. ### Stopping Docker Compose
+    - To stop the application and remove all containers, networks, and associated resources, use the following command:
+        ```bash 
+        docker-compose down 
+        ```
+
 
 
 ## Future Improvements
 
 1. ### Scalability:
     - Implement load balancing for WebSocket and REST APIs.
-
     - Use Redis for session and token storage to support horizontal scaling.
 
 2. ### Error Reporting:
-
     - Enhance logging for better debugging and monitoring using third-party tools like ELK Stack or Datadog.
 
 3. ### Security:
-
     - Implement HTTPS for secure communication.
-
     - Add rate limiting and IP blocking to prevent DDoS attacks.
 
 4. ### Testing:
