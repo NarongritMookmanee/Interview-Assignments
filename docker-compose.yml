@@ -38,5 +38,5 @@ services:
       - "3000:3000"
 
 networks:
-  mysql-network:    # created network to container
-    driver: bridge  # used default network driver
+  mysql-network:                         # created network to container
+    driver: bridge                       # used default network driver

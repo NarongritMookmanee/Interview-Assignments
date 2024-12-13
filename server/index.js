@@ -20,7 +20,7 @@ app.use(cors({
     origin: 'http://localhost:3000', // cors opened for frontend domain
     credentials: true,
 }))
-app.use(express.json()); // using for JSON payload
+app.use(express.json());             // using for JSON payload
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser());
 app.use(verifyToken)

@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NarongritMookmanee/InterviewAssignments.git"
+    "url": "git+https://github.com/NarongritMookmanee/Interview-Assignments"
   },
   "author": "Narongrit Mookmanee",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NarongritMookmanee/InterviewAssignments/issues"
+    "url": "https://github.com/NarongritMookmanee/Interview-Assignments/issues"
   },
-  "homepage": "https://github.com/NarongritMookmanee/InterviewAssignments#readme",
+  "homepage": "https://github.com/NarongritMookmanee/Interview-Assignments#readme",
   "description": "",
   "dependencies": {
     "body-parser": "^1.20.3",
