@@ -1,5 +1,5 @@
 # Overview 
-- This project implements a RESTful API server for user management, along with a client-side interface for real-time chat functionality. It incorporates essential features such as user authentication, database operations, and WebSocket-based real-time communication. The project has been designed to ensure scalability, modularity, and ease of deployment.
+This project implements a RESTful API server for user management, along with a client-side interface for real-time chat functionality. It incorporates essential features such as user authentication, database operations, and WebSocket-based real-time communication. The project has been designed to ensure scalability, modularity, and ease of deployment.
 
 
 ## Design Choices
@@ -105,3 +105,158 @@
 
 4. ### Testing:
     - Write unit and integration tests for backend services using Jest or Mocha.
+
+## APIs Documentation
+
+- ### Base URL: `http://localhost:8000`
+
+---
+
+### Endpoints
+
+#### 1. Get All User
+   - **URL**: `/api/users`
+   - **Method**: `GET`
+   - **Description**: Retrieves a list of all users in the database.
+   - **Response**:
+     ```json
+     [
+       {
+         "id": 1,
+         "username": "JohnDoe",
+         "email": "johndoe@example.com",
+         "role": "admin",
+         "created_at": "2024-12-14T12:34:56Z"
+       },
+       {
+         "id": 2,
+         "username": "JaneDoe",
+         "email": "janedoe@example.com",
+         "role": "user",
+         "created_at": "2024-12-13T09:22:11Z"
+       }
+     ]
+     ```
+
+---
+
+#### 2. **Get User by ID**
+   - **URL**: `/api/users/:id`
+   - **Method**: `GET`
+   - **Description**: Retrieves a user by their unique ID.
+   - **Request Parameters**:
+     - `id` (required): User's unique ID.
+   - **Response**:
+     ```json
+     {
+       "id": 1,
+       "username": "JohnDoe",
+       "email": "johndoe@example.com",
+       "role": "admin",
+       "created_at": "2024-12-14T12:34:56Z"
+     }
+     ```
+
+---
+
+#### 3. **Create a New User**
+   - **URL**: `/api/users`
+   - **Method**: `POST`
+   - **Description**: Creates a new user in the database.
+   - **Request Body**:
+     ```json
+     {
+       "username": "JohnDoe",
+       "email": "johndoe@example.com",
+       "password": "securepassword",
+       "role": "admin"
+     }
+     ```
+   - **Response**:
+     ```json
+     {
+       "status": "succeeded",
+       "message": "User created successfully."
+     }
+     ```
+
+---
+
+#### 4. **Update an Existing User**
+   - **URL**: `/api/users/:id`
+   - **Method**: `PUT`
+   - **Description**: Updates details of an existing user by their ID.
+   - **Request Parameters**:
+     - `id` (required): User's unique ID.
+   - **Request Body**:
+     ```json
+     {
+       "username": "UpdatedUsername",
+       "email": "updatedemail@example.com",
+       "password": "newsecurepassword",
+       "role": "user"
+     }
+     ```
+   - **Response**:
+     ```json
+     {
+       "status": "succeeded",
+       "message": "User updated successfully."
+     }
+     ```
+
+---
+
+#### 5. **Delete a User**
+   - **URL**: `/api/users/:id`
+   - **Method**: `DELETE`
+   - **Description**: Deletes a user from the database by their unique ID.
+   - **Request Parameters**:
+     - `id` (required): User's unique ID.
+   - **Response**:
+     ```json
+     {
+       "status": "succeeded",
+       "message": "User deleted successfully."
+     }
+     ```
+
+---
+#### 6. **Login**
+   - **URL**: `/login`
+   - **Method**: `POST`
+   - **Description**: Authenticates a user and returns a JWT token in an HTTP-only cookie.
+   - **Request Body**:
+     ```json
+     {
+       "email": "user@example.com",
+       "password": "password",
+     }
+     ```
+   - **Response**:
+     ```json
+     {
+       "status": "succeeded",
+       "message": "Login successfully."
+     }
+     ```
+     - A JWT token is stored in an HTTP-only cookie (`auth_token`).
+     - **On Failure**:
+       - **401 Unauthorized**:
+         ```json
+         {
+           "status": "failed",
+           "message": "Invalid credentials."
+         }
+         ```
+---
+
+### Notes
+1. **Authentication**:
+   - Ensure valid JWT tokens are included in requests(cookie) for secured endpoints.
+
+2. **Error Responses**:
+   - 400: Bad Request
+   - 401: Unauthorized
+   - 404: Resource Not Found
+   - 500: Internal Server Error
