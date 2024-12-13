@@ -6,8 +6,6 @@ COPY ./ ./
 
 RUN npm install --force
 
-EXPOSE 3000
+EXPOSE 8000
 
-RUN npm run build
-
-CMD ["serve","-s" ,"build"]
+CMD ["npm", "start"]

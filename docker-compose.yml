@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container  
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw  # root password
+      MYSQL_DATABASE: prd_database       # database name
+      MYSQL_USER: user                   # username
+      MYSQL_PASSWORD: userpassword       # user password
+    ports:
+      - "3306:3306"                      # mapping port to external exposed
+    networks:
+      - mysql-network                    # connected to container network
+    volumes:
+      - ./server/init-sql:/docker-entrypoint-initdb.d  # called to sql script in local machine folder "./init-sql" for initialize the DB
+
+  chat-server:
+    container_name: server-container
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - MYSQL_HOST=mysql
+    networks:
+      - mysql-network                    # connected to container network
+      
+  chat-client:
+    container_name: client-container
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+
+networks:
+  mysql-network:    # created network to container
+    driver: bridge  # used default network driver

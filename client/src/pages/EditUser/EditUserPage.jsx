@@ -56,6 +56,7 @@ function EditUserPage() {
         delete formData.exp
         delete formData.id
         delete formData.iat
+        delete formData.created_at
         console.log('usrCredential: ', formData)
         console.log('usrCredential-id: ',)
         try {

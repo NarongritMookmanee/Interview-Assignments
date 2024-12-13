@@ -7,11 +7,12 @@ export default class UsersController extends DBModelConnection {
         return new Promise(async (resolve, reject) => {
             const keys = Object.keys(body)
             console.log(keys)
-            const targetKeys = ['email', 'password', 'username', 'role']
+            console.log(JSON.parse(process.env.USERS_TARGET_KEYS))
+            const targetKeys = JSON.parse(process.env.USERS_TARGET_KEYS)
             const array = new ArrayUtils(keys)
             await array.betweenIncludes(targetKeys, (isValid) => {
-                console.log(isValid)
-                if (isValid && keys.length === targetKeys.length)
+                console.log('is body keys valid =', isValid)
+                if (isValid)
                     resolve(true)
                 else
                     reject('invalid arguments')

@@ -11,7 +11,7 @@ export default class {
     if (!pool) {
       throw new Error("Database connection not initialized");
     }
-    const [rows] = await pool.query(`SELECT * FROM user`);
+    const [rows] = await pool.query(`SELECT * FROM users`);
     return rows;
   }
 
@@ -19,7 +19,7 @@ export default class {
     if (!pool) {
       throw new Error("Database connection not initialized");
     }
-    const [rows] = await pool.query(`SELECT * FROM user WHERE id = ${id}`);
+    const [rows] = await pool.query(`SELECT * FROM users WHERE id = ${id}`);
     return rows;
   }
 
@@ -28,7 +28,7 @@ export default class {
       throw new Error("Database connection not initialized");
     }
     const [rows] = await pool.query(`
-          INSERT INTO users.user (email, password, username, role) 
+          INSERT INTO users(email, password, username, role) 
           VALUES (
             '${values.email}', 
             '${values.password}', 
@@ -45,7 +45,7 @@ export default class {
       throw new Error("Database connection not initialized");
     }
     const [rows] = await pool.query(`
-          UPDATE users.user 
+          UPDATE users
           SET 
             email = '${values.email}', 
             password = '${values.password}', 
@@ -60,7 +60,7 @@ export default class {
     if (!pool) {
       throw new Error("Database connection not initialized");
     }
-    const [rows] = await pool.query(`DELETE FROM users.user WHERE (id = '${id}');`);
+    const [rows] = await pool.query(`DELETE FROM users WHERE (id = '${id}');`);
     return rows;
   }
 } 

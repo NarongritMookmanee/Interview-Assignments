@@ -2,12 +2,12 @@ export default class {
     constructor(array) {
         this.array = array
     }
-    
+
     async betweenIncludes(target, callback) {
-        let stack = new Array()
-        await this.array.forEach(async element => {
-            await target.includes(element) ? stack.push(true) : stack.push(false)
+        target = await target.map(async element => {
+            console.log(`element{${element}} =`, this.array.includes(element))
+            this.array.includes(element) ? true : false
         })
-        stack.some(element => element === false) ? callback(false) : callback(true)
+        callback(!target.includes(false))
     }
 }
